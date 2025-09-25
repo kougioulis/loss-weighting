@@ -11,25 +11,19 @@ PyTorch modules for training with **multiple loss terms**. Implements both:
 
 In multi-task setups, the naive sum
 
-$$
-\mathcal{L} = \sum_i \mathcal{L}_i
-$$
+$$\mathcal{L} = \sum_i \mathcal{L}_i$$
 
 assumes all tasks are equally important. However, different tasks can have different scales or difficulties.
 
 * **Scaling Weights**:
 
-  $$
-  \mathcal{L} = \sum_i w_i \mathcal{L}_i, \quad w_i > 0
-  $$
+  $$\mathcal{L} = \sum_i w_i \mathcal{L}_i, \quad w_i > 0$$
 
   (weights learned directly).
 
 * **Uncertainty Weights** (Kendall et al.):
 
-  $$
-  \mathcal{L} = \sum_i \frac{1}{\sigma_i^2} \mathcal{L}_i + \log(\sigma_i)
-  $$
+  $$\mathcal{L} = \sum_i \frac{1}{\sigma_i^2} \mathcal{L}_i + \log(\sigma_i)$$
 
   (weights tied to task uncertainty, with regularization).
 
@@ -60,3 +54,9 @@ optimizer.step()
 ```
 
 ⚠️ Include `multi_loss.parameters()` in your optimizer.
+
+---
+
+## Note
+
+In the paper by Kendall et al, regression tasks are weighted by $\frac{1}{2\sigma_i^2}$ and include a $\log(\sigma_i)$ term. This implementation does not apply the factor of $0.5$ (which is directed for regression tasks) but can be adapted to do so.
