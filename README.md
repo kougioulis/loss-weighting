@@ -1,5 +1,8 @@
 # Dynamic Loss Weighting
 
+[![CodeFactor](https://www.codefactor.io/repository/github/kougioulis/loss-weighting/badge)](https://www.codefactor.io/repository/github/kougioulis/loss-weighting)
+![PyTorch](https://img.shields.io/badge/PyTorch-black?logo=pytorch)
+
 PyTorch modules for training with **multiple loss terms**. Implements both:
 
 * **Scaling Weights** – learn positive coefficients for each loss term.
